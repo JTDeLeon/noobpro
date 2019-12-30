@@ -1,0 +1,17 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %}
+
+{% block content %}
+{# Navigation #}
+  {# <!-- Importing Nunjucks Macro -->
+  {% import 'macros/nav-macro.nunjucks' as nav %}
+  {{nav.active('home')}} #}
+  
+  {% include "partials/navigation.nunjucks" %}
+
+{# Main Body #}
+  {% include "partials/mainbody.nunjucks" %}
+
+{# Footer #}
+  {% include "partials/footer.nunjucks" %}
+{% endblock %}

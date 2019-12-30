@@ -1,0 +1,11 @@
+{
+    "page_title": "Noob Pro Gaming",
+    "css_styles": "styles/main.min.css",
+    "images": [{
+      "src": "image-one.png",
+      "alt": "Image one alt text"
+    }, {
+      "src": "image-two.png",
+      "alt": "Image two alt text"
+    }]
+  }

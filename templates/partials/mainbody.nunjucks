@@ -1,0 +1,11 @@
+  <h1>This is the Main nunjucks page</h1>
+
+  {# Images from data #}
+  <div class="gallery">
+    <!-- Loops through "images" array -->
+    {% for image in images %}
+    <div class="gallery__item">
+      <img src="{{image.src}}" alt="{{image.alt}}">
+    </div>
+    {% endfor %}
+  </div>

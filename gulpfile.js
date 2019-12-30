@@ -6,6 +6,8 @@ var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 var cleanCSS = require('gulp-clean-css');
 var del = require('del');
+var nunjucksRender = require('gulp-nunjucks-render');
+var data = require('gulp-data');
 
 sass.compiler = require('node-sass');
  
@@ -28,6 +30,20 @@ function clean() {
   // You can use multiple globbing patterns as you would with `gulp.src`,
   // for example if you are using del 2.0 or above, return its promise
   return del([ 'public' ]);
+}
+
+function nunjucks() {
+  // Gets .html and .nunjucks files in pages
+  return gulp.src('./pages/*.+(html|nunjucks)')
+  .pipe(data(function() {
+    return require('./data.json')
+  }))
+  // Renders template with nunjucks
+  .pipe(nunjucksRender({
+      path: ['./templates']
+    }))
+  // output files in app folder
+  .pipe(gulp.dest('./public'))
 }
  
 /*
@@ -68,6 +84,7 @@ var build = gulp.series(clean, gulp.parallel(styles, scripts));
 /*
  * You can use CommonJS `exports` module notation to declare tasks
  */
+exports.nunjucks = nunjucks;
 exports.clean = clean;
 exports.styles = styles;
 exports.scripts = scripts;
